@@ -80,7 +80,10 @@ export const pageQuery = graphql`
   ) {
     site {
       siteMetadata {
-        title
+        title {
+          text
+          subTitle
+        }
       }
     }
     markdownRemark(id: { eq: $id }) {
@@ -91,6 +94,9 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        category
+        tags
+        refs
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

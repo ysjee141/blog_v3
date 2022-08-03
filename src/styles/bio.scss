@@ -1,0 +1,107 @@
+@mixin bio-style {
+  article.bio {
+    border: 1px solid var(--color-bio-border-color);
+    border-radius: 3px;
+    padding: var(--spacing-3);
+    box-sizing: border-box;
+    text-align: center;
+
+    &[color-theme='dark'] {
+      border: none;
+    }
+
+    div {
+      width: var(--maxWidth-full);
+      display: block;
+      &.avatar {
+        width: var(--maxWidth-full);
+        margin-left: auto;
+        margin-right: auto;
+        img {
+          padding: var(--spacing-2);
+          border: 1px solid #f2f3f3;
+          max-width: var(--maxWidth-xs);
+          border-radius: 50%;
+          box-sizing: border-box;
+        }
+      }
+      &.author {
+        margin-top: 10px;
+        div {
+          &.author__name {
+            font-size: var(--fontSize-2);
+            text-transform: uppercase;
+            display: block;
+            font-weight: bold;
+          }
+          &.author__description {
+            color: var(--color-text-light);
+            font-size: var(--fontSize-0);
+            margin-top: var(--spacing-3);
+            margin-bottom: var(--spacing-2);
+          }
+        }
+      }
+    }
+
+    ul {
+      &,li {
+        list-style: none;
+        padding: var(--spacing-0);
+        margin: var(--spacing-0);
+      }
+      width: var(--maxWidth-full);
+      display: table;
+      &.blog__statistics {
+        margin-bottom: var(--spacing-5);
+        li {
+          display: table-cell;
+          width: 33.3%;
+          border-right: 1px solid #d9d9d9;
+          box-sizing: border-box;
+          div {
+            &:first-child {
+              color: var(--color-text);
+              font-size: var(--fontSize-1);
+              margin-bottom: var(--spacing-1);
+              font-weight: bold;
+            }
+            &:last-child {
+              color: var(--color-text-light);
+              font-size: var(--fontSize-0);
+            }
+          }
+
+          &:last-child {
+            border: none;
+          }
+        }
+      }
+      &.author__urls {
+        li {
+          float: right;
+          svg {
+            color: var(--color-text);
+            font-size: var(--fontSize-1);
+            margin-right: var(--spacing-2);
+            &[data-icon='instagram'] {
+              color: #517fa4;
+            }
+            &[data-icon='github'] {
+              color: #171516;
+            }
+          }
+          &:first-child {
+            float: left;
+            display: inline-block;
+            span {
+              font-size: var(--fontSize-1);
+              box-sizing: border-box;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

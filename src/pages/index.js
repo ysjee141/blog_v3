@@ -4,16 +4,17 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import BlogList from "../components/bloglist";
 
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+  const siteTitle = data.site.siteMetadata?.title || {text: `Title`}
   const posts = data.allMarkdownRemark.nodes
+  const pageInfo = data.allMarkdownRemark.pageInfo
 
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <Bio />
         <p>
           No blog posts found. Add markdown posts to "content/blog" (or the
           directory you specified for the "gatsby-source-filesystem" plugin in
@@ -25,8 +26,8 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Bio />
-      <ol style={{ listStyle: `none` }}>
+      <BlogList posts={posts} pageInfo={pageInfo}/>
+      {/*<ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
 
@@ -57,7 +58,7 @@ const BlogIndex = ({ data, location }) => {
             </li>
           )
         })}
-      </ol>
+      </ol>*/}
     </Layout>
   )
 }
@@ -67,23 +68,39 @@ export default BlogIndex
 export const Head = () => <Seo title="All posts" />
 
 export const pageQuery = graphql`
-  query {
+  query  {
     site {
       siteMetadata {
-        title
+        title {
+          text
+          subTitle
+        }
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark( 
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 10
+    ) {
       nodes {
-        excerpt
         fields {
           slug
         }
         frontmatter {
-          date(formatString: "MMMM DD, YYYY")
           title
+          category
+          date(formatString: "MMM DD, YYYY")
           description
+          tags
         }
+        excerpt
+      }
+      pageInfo {
+        currentPage
+        hasNextPage
+        hasPreviousPage
+        pageCount
+        perPage
+        totalCount
       }
     }
   }

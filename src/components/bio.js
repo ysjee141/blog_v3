@@ -6,8 +6,10 @@
  */
 
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import {graphql, useStaticQuery} from "gatsby"
+import {StaticImage} from "gatsby-plugin-image"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faLocationDot} from "@fortawesome/free-solid-svg-icons";
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -17,11 +19,22 @@ const Bio = () => {
           author {
             name
             summary
+            image
           }
           social {
-            twitter
+            name
+            url
+            icon
           }
         }
+      }
+      allMarkdownRemark {
+       nodes {
+         frontmatter {
+           tags
+         }
+       }
+       totalCount
       }
     }
   `)
@@ -29,29 +42,55 @@ const Bio = () => {
   // Set these values by editing "siteMetadata" in gatsby-config.js
   const author = data.site.siteMetadata?.author
   const social = data.site.siteMetadata?.social
+  const postCount = data.allMarkdownRemark.totalCount;
+
+  const tags = new Set()
+  data.allMarkdownRemark.nodes.forEach(n => {
+    n.frontmatter?.tags?.filter(t => t !== '').forEach(t => tags.add(t))
+  })
 
   return (
-    <div className="bio">
-      <StaticImage
-        className="bio-avatar"
-        layout="fixed"
-        formats={["auto", "webp", "avif"]}
-        src="../images/profile-pic.png"
-        width={50}
-        height={50}
-        quality={95}
-        alt="Profile picture"
-      />
-      {author?.name && (
-        <p>
-          Written by <strong>{author.name}</strong> {author?.summary || null}
-          {` `}
-          <a href={`https://twitter.com/${social?.twitter || ``}`}>
-            You should follow them on Twitter
-          </a>
-        </p>
-      )}
-    </div>
+    <article className={`bio`}>
+      <div className='avatar'>
+        <StaticImage
+          layout="fixed"
+          formats={["auto", "webp", "avif"]}
+          src="../images/profile.jpg"
+          style={{marginLeft: `auto`, marginRight: `auto`}}
+          width={110}
+          height={110}
+          quality={95}
+          alt="Profile picture"
+        />
+      </div>
+      <div className='author'>
+        <div className="author__name">{author.name}</div>
+        <div className='author__description'>{author.summary}</div>
+      </div>
+      <ul className='blog__statistics'>
+        <li>
+          <div>{postCount}</div>
+          <div>POSTS</div>
+        </li>
+        <li>
+          <div>{tags.size}</div>
+          <div>TAGS</div>
+        </li>
+        <li>
+          <div>D+606</div>
+          <div>OPENED</div>
+        </li>
+      </ul>
+      <ul className='author__urls'>
+        <li>
+          <FontAwesomeIcon icon={faLocationDot}/>
+          <span>Seoul, Korea</span>
+        </li>
+        {/*{social.map(s => (
+          <Social key={s.name} social={s} isText={false}/>
+        ))}*/}
+      </ul>
+    </article>
   )
 }
 

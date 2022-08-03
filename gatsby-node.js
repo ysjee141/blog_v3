@@ -83,18 +83,48 @@ exports.createSchemaCustomization = ({ actions }) => {
   // blog posts are stored inside "content/blog" instead of returning an error
   createTypes(`
     type SiteSiteMetadata {
+      title: Title
       author: Author
       siteUrl: String
-      social: Social
+      social: [Social]
+      career: [Career]
+      skill: [Skill]
+    }
+    
+    type Skill {
+      category: String
+      name: String
+      score: Int
+    }
+    
+    type Career {
+      name: String
+      dept: String
+      date: CareerDate
+      grade: String
+      job: String
+    }
+    
+    type CareerDate {
+      from: String
+      to: String
+    }
+    
+    type Title {
+      text: String
+      subTitle: String
     }
 
     type Author {
       name: String
       summary: String
+      image: String
     }
 
     type Social {
-      twitter: String
+      name: String
+      url: String
+      icon: String
     }
 
     type MarkdownRemark implements Node {
@@ -106,6 +136,10 @@ exports.createSchemaCustomization = ({ actions }) => {
       title: String
       description: String
       date: Date @dateformat
+      category: String! @category
+      tags: [String]
+      published: Boolean
+      refs: [String]
     }
 
     type Fields {
