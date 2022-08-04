@@ -18,11 +18,11 @@ ol.archive__list {
           margin-top: var(--spacing-0);
 
           a {
-            font-size: var(--fontSize-3);
+            font-size: var(--fontSize-2);
             position: static;
             text-decoration: none;
             color: var(--color-heading-black);
-            font-weight: var(--fontWeight-medium);
+            font-weight: var(--fontWeight-bold);
 
             &:before {
               content: '';
@@ -38,13 +38,13 @@ ol.archive__list {
 
         small {
           svg {
-            font-size: var(--fontSize-1);
+            font-size: var(--fontSize-0);
             color: var(--color-text);
             margin-right: var(--spacing-2);
           }
 
           span {
-            font-size: var(--fontSize-1);
+            font-size: calc(var(--fontSize-0) + .05em);
             color: var(--color-text);
           }
         }

@@ -43,7 +43,7 @@ const Header = () => {
         <nav className={ isToggledNav ? 'active' : '' }>
           <ul>
             <li>
-              <Link to='/'>Posts</Link>
+              <Link to='/' activeClassName={`active`}>Posts</Link>
             </li>
             <li>
               <Link to='/'>Series</Link>

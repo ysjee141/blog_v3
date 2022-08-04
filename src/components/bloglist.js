@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import Pagination from "./pagination"
 import * as React from "react"
-import {faClock} from "@fortawesome/free-solid-svg-icons";
+import {faClock} from "@fortawesome/free-regular-svg-icons";
 
 const BlogList = ({ posts, pageInfo, pageContext }) => {
   return (

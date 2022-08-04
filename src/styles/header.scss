@@ -1,7 +1,6 @@
 .global-wrapper {
   > .header-wrapper {
     width: 100%;
-    border-bottom: 1px solid #d9d9d9;
     position: sticky;
     z-index: 1;
     top: -16px;
@@ -12,12 +11,14 @@
       background-color: var(--background);
       margin: var(--spacing-0) auto;
       max-width: $wideMaxWidth;
-      padding: var(--spacing-10) var(--spacing-5);
+      padding: var(--spacing-6) var(--spacing-5);
       padding-bottom: var(--spacing-4);
 
       > a {
         margin-right: auto;
         display: flex;
+        font-size: var(--fontSize-0);
+        padding-top: 7px;
       }
 
       nav {
@@ -36,10 +37,34 @@
             list-style: none;
 
             a {
-              color: var(--color-heading-black);
+              position: relative;
+              color: var(--color-text);
               font-weight: var(--fontWeight-medium);
-              font-size: var(--fontSize-3);
+              font-size: var(--fontSize-2);
               text-decoration: none;
+
+              &:before {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: -3px;
+                height: 2px;
+                background: var(--color-primary);
+                width: 100%;
+                -webkit-transition: all 0.2s ease-in-out;
+                transition: all 0.2s ease-in-out;
+                -webkit-transform: scaleX(0) translate3d(0, 0, 0);
+                transform: scaleX(0) translate3d(0, 0, 0);
+              }
+
+              &.active {
+                color: var(--color-heading-black);
+                font-weight: var(--fontWeight-extrabold);
+
+                &:before {
+                  transform: scaleX(1) !important;
+                }
+              }
             }
           }
         }

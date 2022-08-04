@@ -30,9 +30,8 @@
   --spacing-24: 6rem;
   --spacing-32: 8rem;
 
-  --fontFamily-sans: Open Sans, sans-serif, Avenir, "Lato", "애플 SD 산돌고딕 Neo", "Apple SD Gothic Neo",
-  "나눔바른고딕", NanumBarunGothic, "나눔고딕", NanumGothic, "맑은 고딕", "Malgun Gothic", "돋움",
-  dotum, AppleGothic;
+  --fontFamily-sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Apple SD Gothic Neo", "Malgun Gothic",
+  "맑은 고딕", 나눔고딕, "Nanum Gothic", "Noto Sans KR", "Noto Sans CJK KR", arial, 돋움, Dotum, Tahoma, Geneva, sans-serif;
   --font-body: var(--fontFamily-serif);
   --font-heading: var(--fontFamily-sans);
   --fontWeight-normal: 400;
