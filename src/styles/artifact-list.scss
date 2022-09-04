@@ -1,13 +1,26 @@
 ol.archive__list {
   @include list-none-style;
 
+  display: flex;
+  flex-wrap: wrap;
+
   li {
-    padding: var(--spacing-5);
+    //padding: var(--spacing-5);
     background-color: var(--background-light);
-    border-radius: 10px;
+    border-radius: var(--spacing-1);
+    flex: 1 1 30%;
+    margin: calc(var(--spacing-8) / 2);
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 15%);
+    transition: box-shadow 0.25s ease-in 0s, transform 0.25s ease-in 0s;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: rgb(0 0 0 / 8%) 0 12px 20px 0;
+    }
 
     article {
-      display: block;
+      display: flex;
+      flex-direction: column;
       position: relative;
 
       header {

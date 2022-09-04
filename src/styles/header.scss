@@ -5,6 +5,10 @@
     z-index: 1;
     top: -16px;
 
+    &.shadow {
+      box-shadow: rgb(0 0 0 / 8%) 0 0 8px;
+    }
+
     > header {
       display: flex;
       gap: var(--spacing-4);

@@ -57,9 +57,9 @@
 }
 
 :root[color-theme='light'] {
-  --background: #fff;
-  --background-light: #f4f9fd;
-  --color-primary: #005b99;
+  --background: rgb(249, 247, 247);
+  --background-light: rgb(255, 255, 255);
+  --color-primary: rgb(63, 114, 175);
   --color-text: #2e353f;
   --color-text-light: #4f5969;
   --color-heading: #1a202c;
@@ -67,18 +67,20 @@
   --color-accent: #d1dce5;
 
   --color-bio-border-color: #d9d9d9;
+  --colorFilterInvert: invert(0);
 }
 
 
 :root[color-theme='dark'] {
-  --background: hsl(216deg 6% 15%);
-  --background-light: hsl(200, 7%, 9%);
-  --color-primary: #005b99;
+  --background: rgb(34, 40, 49);
+  --background-light: rgb(57, 62, 70);
+  --color-primary: rgb(0, 173, 181);
   --color-text: hsl(214, 18%, 77%);
   --color-text-light: #4f5969;
   --color-heading: hsl(155deg 61% 44%);
   --color-heading-black: white;
   --color-accent: #d1dce5;
+  --colorFilterInvert: invert(1);
 }
 
 @mixin mobile {
